@@ -1,0 +1,27 @@
+#include <16f887.h>
+#use delay(clock=4000000)
+#fuses XT
+int x;
+
+#INT_EXT
+void EXT_isr()
+{
+  for(x=1; x<=4; x++)
+   {
+     output_high(PIN_D0);
+     delay_ms(200);
+     output_low(PIN_D0);
+     delay_ms(200);
+   }
+}
+
+void main()
+{
+enable_interrupts(GLOBAL);
+enable_interrupts(INT_EXT);
+EXT_int_edge(H_TO_L);
+while (true)
+  {
+  }
+}  
+

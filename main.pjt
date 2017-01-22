@@ -1,0 +1,26 @@
+[PROJECT]
+Target=B:\Giancarlos\Documentos\Proteus 8\Ecuador\main.hex
+Development_Mode=
+Processor_Text=PIC16F887
+ToolSuite=CCS
+Processor=0x887F
+[B:\Giancarlos\Documentos\Proteus 8\Ecuador\main]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[mru-list]
+1=B:\Giancarlos\Documentos\Proteus 8\Ecuador\main.c
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+[Units]
+Link=0
+Count=1
+1=B:\Giancarlos\Documentos\Proteus 8\Ecuador\main
+[Opened Files]
+1=main.c
+2=..\..\main.c
+3=
+4=

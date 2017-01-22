@@ -1,0 +1,138 @@
+CCS PCM C Compiler, Version 4.130, 59972               21-ene.-17 11:52
+
+               Filename: B:\Giancarlos\Documentos\Proteus 8\Ecuador\es\timer\int_timer.lst
+
+               ROM used: 92 words (1%)
+                         Largest free fragment is 2048
+               RAM used: 12 (3%) at main() level
+                         12 (3%) worst case
+               Stack:    1 worst case (0 in main + 1 for interrupts)
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   036
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  BTFSS  0B.5
+0018:  GOTO   01B
+0019:  BTFSC  0B.2
+001A:  GOTO   02C
+001B:  MOVF   22,W
+001C:  MOVWF  04
+001D:  MOVF   23,W
+001E:  MOVWF  77
+001F:  MOVF   24,W
+0020:  MOVWF  78
+0021:  MOVF   25,W
+0022:  MOVWF  79
+0023:  MOVF   26,W
+0024:  MOVWF  7A
+0025:  MOVF   20,W
+0026:  MOVWF  0A
+0027:  SWAPF  21,W
+0028:  MOVWF  03
+0029:  SWAPF  7F,F
+002A:  SWAPF  7F,W
+002B:  RETFIE
+002C:  BCF    0A.3
+002D:  BCF    0A.4
+002E:  GOTO   02F
+.................... #include <16f887.h> 
+.................... //////// Standard Header file for the PIC16F887 device //////////////// 
+.................... #device PIC16F887 
+.................... #list 
+....................  
+.................... #use delay(clock=4M) 
+.................... #fuses XT 
+.................... #byte portb=0x06 
+.................... #byte portd=0x08 
+....................  
+....................  
+.................... #INT_TIMER0   //Activa la interrupcion, por Timer  
+.................... void timer0_isr() 
+.................... { 
+....................   portd=~portd; 
+002F:  COMF   08,F
+....................   set_timer0(195);//1ms 
+0030:  MOVLW  C3
+0031:  MOVWF  01
+.................... } 
+....................  
+0032:  BCF    0B.2
+0033:  BCF    0A.3
+0034:  BCF    0A.4
+0035:  GOTO   01B
+.................... void main() 
+.................... { 
+0036:  CLRF   04
+0037:  BCF    03.7
+0038:  MOVLW  1F
+0039:  ANDWF  03,F
+003A:  BSF    03.5
+003B:  BSF    03.6
+003C:  MOVF   09,W
+003D:  ANDLW  C0
+003E:  MOVWF  09
+003F:  BCF    03.6
+0040:  BCF    1F.4
+0041:  BCF    1F.5
+0042:  MOVLW  00
+0043:  BSF    03.6
+0044:  MOVWF  08
+0045:  BCF    03.5
+0046:  CLRF   07
+0047:  CLRF   08
+0048:  CLRF   09
+....................  set_tris_d(0x00); 
+0049:  MOVLW  00
+004A:  BSF    03.5
+004B:  BCF    03.6
+004C:  MOVWF  08
+....................  portd=0; 
+004D:  BCF    03.5
+004E:  CLRF   08
+....................  enable_interrupts(global); //interrupcion global 
+004F:  MOVLW  C0
+0050:  IORWF  0B,F
+....................  enable_interrupts(INT_TIMER0); //habilitar la interrupcion externa 
+0051:  BSF    0B.5
+....................  setup_timer_0(T0_INTERNAL|T0_DIV_16); 
+0052:  BSF    03.5
+0053:  MOVF   01,W
+0054:  ANDLW  C0
+0055:  IORLW  03
+0056:  MOVWF  01
+....................  set_timer0(195); 
+0057:  MOVLW  C3
+0058:  BCF    03.5
+0059:  MOVWF  01
+....................  while(true) 
+....................  { 
+....................  } 
+005A:  GOTO   05A
+....................  
+.................... } 
+005B:  SLEEP
+
+Configuration Fuses:
+   Word  1: 2FE1   XT NOWDT PUT MCLR NOPROTECT NOCPD BROWNOUT IESO FCMEN NOLVP NODEBUG
+   Word  2: 3FFF   BORV40 NOWRT
