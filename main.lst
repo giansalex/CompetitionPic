@@ -1,4 +1,4 @@
-CCS PCM C Compiler, Version 4.130, 59972               22-ene.-17 12:54
+CCS PCM C Compiler, Version 4.130, 59972               22-ene.-17 18:32
 
                Filename: B:\Giancarlos\Documentos\Proteus 8\Ecuador\main.lst
 
@@ -441,7 +441,7 @@ CCS PCM C Compiler, Version 4.130, 59972               22-ene.-17 12:54
 .................... } 
 ....................  
 ....................  
-.................... #define TIMER_VALUE 100 // 256 -  10ms/(64 * 4/4Mhz)  => 99.75  
+.................... #define TIMER_VALUE 100 // 10ms = 4 * 64 * (256 - x) / 4Mhz   => x  = 99.75  
 ....................  
 .................... int16 miliseconds = 0; // guarda los milisegundos del timer. 
 ....................  
@@ -454,7 +454,7 @@ CCS PCM C Compiler, Version 4.130, 59972               22-ene.-17 12:54
 0038:  ADDWF  28,F
 0039:  BTFSC  03.0
 003A:  INCF   29,F
-....................    set_timer0(TIMER_VALUE); // Valor del timer para 10ms. 
+....................    set_timer0(TIMER_VALUE); // carga del timer para 10ms. 
 003B:  MOVLW  64
 003C:  MOVWF  01
 .................... } 
@@ -527,7 +527,7 @@ CCS PCM C Compiler, Version 4.130, 59972               22-ene.-17 12:54
 04D4:  MOVWF  08
 ....................     
 ....................    // Interrupcion Timer 0 
-....................    setup_timer_0(T0_INTERNAL|T0_DIV_64);  
+....................    setup_timer_0(T0_INTERNAL|T0_DIV_64); // Prescaler = 64 
 04D5:  MOVF   01,W
 04D6:  ANDLW  C0
 04D7:  IORLW  05
@@ -557,7 +557,7 @@ CCS PCM C Compiler, Version 4.130, 59972               22-ene.-17 12:54
 ....................    enable_interrupts(GLOBAL);// Pone en marcha todas las interrupaciones. 
 04EA:  MOVLW  C0
 04EB:  IORWF  0B,F
-....................    set_timer0(TIMER_VALUE); // Pone el valor del timer para 10ms 
+....................    set_timer0(TIMER_VALUE); // carga del timer para 10ms 
 04EC:  MOVLW  64
 04ED:  MOVWF  01
 ....................     

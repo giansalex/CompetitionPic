@@ -174,12 +174,12 @@ Project Directory:
     B:\Giancarlos\Documentos\Proteus 8\Ecuador\
 
 Project Files:
-    main.c                                                  [22-ene.-17 12:54  CRC=091D0581]
+    main.c                                                  [22-ene.-17 18:32  CRC=C317DA97]
     main.h                                                  [22-ene.-17 12:31  CRC=D63E48F4]
     C:\Program Files (x86)\PICC\devices\16F887.h            [28-feb.-12 13:43  CRC=49117F20]
     C:\Program Files (x86)\PICC\drivers\lcd420.c            [14-abr.-09 10:58  CRC=C5A307B3]
 
-Source signature=B3B2DCFB
+Source signature=6DADB211
 
 Units:
     main (main)

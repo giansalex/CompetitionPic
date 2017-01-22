@@ -28,7 +28,7 @@ Page ROM  %  RAM   Vol Diff  Functions:
 0     58   4   3   317  4.3  lcd_send_byte
 0     44   3   2   422  4.7  lcd_init
 0     27   2   3   321  5.5  lcd_gotoxy
-0      8   1   0   202  3.2  @goto10099
+0      8   1   0             @goto10099
 0     40   3   1   308  5.0  lcd_putc
 0     10   1   0    33  1.3  timer0_isr
 0    407  25  35  1947 10.5  MAIN
@@ -38,25 +38,25 @@ Page ROM  %  RAM   Vol Diff  Functions:
 0    204  13  14             @DIVFF
 0     63   4  10             @FLT
  Inline       13             @MULFF
- Inline        5   127  1.9  @FTOSD
-0     79   5  13   127  1.9  @DIV3232
-0    339  21  13   127  1.9  @PRINTF_L32D_94FPFPF
-0      6   0   0   127  1.9  @const134
-0     21   1   3   127  1.9  @DIV88
-0     89   6   6   127  1.9  @PRINTF_D_94
- Inline        0   127  1.9  @cinit1
+ Inline        5             @FTOSD
+0     79   5  13             @DIV3232
+0    339  21  13             @PRINTF_L32D_94FPFPF
+0      6   0   0             @const134
+0     21   1   3             @DIV88
+0     89   6   6             @PRINTF_D_94
+ Inline        0             @cinit1
 
 Program metrics:
-    Functions               16
+    Functions               8
     Statements              111
-    Comments                161
-    Volume (V)              8200
-    Difficulty (D)          53.9
-    Effort to implement (E) 442188
-    Time to implement (T)   6 hours, 49 minutes
-    Est Delivered Bugs (B)  2
+    Comments                162
+    Volume (V)              5631
+    Difficulty (D)          36.6
+    Effort to implement (E) 206119
+    Time to implement (T)   3 hours, 11 minutes
+    Est Delivered Bugs (B)  1
     Cyclomatic Complexity   17
-    Maintainability (MI)    58
+    Maintainability (MI)    126
 
  Segment     Used  Free
 -----------  ----  ----

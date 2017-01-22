@@ -1,6 +1,6 @@
 #include <main.h>
 #include <lcd420.c>
-#define TIMER_VALUE 100 // 256 -  10ms/(64 * 4/4Mhz)  => 99.75 
+#define TIMER_VALUE 100 // 10ms = 4 * 64 * (256 - x) / 4Mhz   => x  = 99.75 
 
 int16 miliseconds = 0; // guarda los milisegundos del timer.
 
@@ -8,7 +8,7 @@ int16 miliseconds = 0; // guarda los milisegundos del timer.
 void timer0_isr()
 {
    miliseconds += 10; // Aumenta 10ms.
-   set_timer0(TIMER_VALUE); // Valor del timer para 10ms.
+   set_timer0(TIMER_VALUE); // carga del timer para 10ms.
 }
 
 void main()
@@ -27,14 +27,14 @@ void main()
    set_tris_d(0xFF); // Puerto D como entradas.
    
    // Interrupcion Timer 0
-   setup_timer_0(T0_INTERNAL|T0_DIV_64); 
+   setup_timer_0(T0_INTERNAL|T0_DIV_64); // Prescaler = 64
    enable_interrupts(INT_TIMER0); //habilitar la interrupcion del timer0
 
    lcd_putc("Presione START");
    while (!input(PIN_D7)); // Espera que pulse START.
    lcd_putc('\f');
    enable_interrupts(GLOBAL);// Pone en marcha todas las interrupaciones.
-   set_timer0(TIMER_VALUE); // Pone el valor del timer para 10ms
+   set_timer0(TIMER_VALUE); // carga del timer para 10ms
    
    while(TRUE)
    {
