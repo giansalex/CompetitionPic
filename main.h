@@ -16,3 +16,12 @@
 #define LCD_Data6  PIN_D6
 #define LCD_Data7  PIN_D7
 
+
+#define LCD_DB4   PIN_B4 
+#define LCD_DB5   PIN_B5 
+#define LCD_DB6   PIN_B6 
+#define LCD_DB7   PIN_B7 
+
+#define LCD_RS    PIN_C5 
+#define LCD_RW    PIN_C6 
+#define LCD_E     PIN_C7 
